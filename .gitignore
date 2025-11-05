@@ -1,14 +1,15 @@
-# Node / JavaScript
+# Dependencies
 node_modules/
-frontend/node_modules/
-server/node_modules/
+**/node_modules/
 
-# React build output
+# Build output
+build/
+dist/
 frontend/build/
 
 # Logs
-logs
 *.log
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -16,42 +17,49 @@ pnpm-debug.log*
 
 # Environment files
 .env
-.env.*
-frontend/.env
-frontend/.env.*
-server/.env
-server/.env.*
+.env.local
+.env.*.local
+**/.env
 
 # Python
 __pycache__/
 *.py[cod]
+*$py.class
 *.so
-*.dylib
+*.egg
+*.egg-info/
 .pytest_cache/
 .mypy_cache/
 .ipynb_checkpoints/
 
-# Python packaging
-build/
-dist/
-*.egg-info/
-pip-wheel-metadata/
-
 # Virtual environments
-.venv/
 venv/
 env/
+.venv/
 ENV/
-ml-service/venv/
-ml-multidigit/venv/
-ml-service/singleDigit/
+**/venv/
+**/env/
+
+# ML Models (large files)
+model/
+*.h5
+*.pkl
+*.pth
+*.onnx
 
 # OS
 .DS_Store
 Thumbs.db
+*.swp
+*~
 
-# Project artifacts
-model/
-
-# Editors/IDE
+# IDEs
 .vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.coverage
+*.cover

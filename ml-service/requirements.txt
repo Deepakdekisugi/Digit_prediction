@@ -3,3 +3,7 @@ tensorflow
 pillow
 numpy
 flask-cors
+opencv-python
+gunicorn
+scipy
+scipy

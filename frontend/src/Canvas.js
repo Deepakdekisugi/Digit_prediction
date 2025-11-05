@@ -15,8 +15,9 @@ export default function Canvas() {
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'white';
-    ctx.lineWidth = 18;
+    ctx.lineWidth = 20;  // Slightly thicker for better recognition
     ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
   }, []);
 
   const getPos = (e) => {
@@ -63,8 +64,9 @@ export default function Canvas() {
     setPrediction(null);
     setProbabilities(null);
     const dataUrl = canvasRef.current.toDataURL('image/png');
+    const apiUrl = process.env.REACT_APP_ML_API_URL || 'http://localhost:5000';
     try {
-      const res = await fetch('/api/predict', {
+      const res = await fetch(`${apiUrl}/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: dataUrl })

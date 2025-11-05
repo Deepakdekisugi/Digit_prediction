@@ -1,58 +1,101 @@
-# Digit Recognizer (Single-digit + Multi-digit) - MERN + Python ML Services (UNTRAINED)
+# 🎨 Digit Prediction - Handwritten Digit Recognition
 
-This repo contains an untrained, ready-to-run project that separates the ML services from the MERN app.
-You must train the ML model locally (instructions below) to create `ml-service/model/model.h5` before running the multi-digit service.
+A full-stack machine learning web app that recognizes handwritten digits using deep learning.
 
-Structure:
-- ml-service/      : Flask single-digit MNIST CNN API (port 5000) + train_model.py
-- ml-multidigit/   : Flask multi-digit segmentation API (port 5001) that uses ml-service/model.h5
-- node-backend/    : Express server exposing /api/predict and /api/multipredict (port 4000)
-- react-fronted/   : React app with routes / and /multi
+## ✨ Features
 
-## Quick Setup (UNTRAINED)
-Prereqs: Node.js (16+), Python 3.8+, pip, (optional) virtualenv
+- **Single Digit Recognition** - Draw and predict individual digits (0-9)
+- **Multi-Digit Recognition** - Draw and predict entire numbers
+- **Real-time Predictions** - Instant feedback with probability distributions
+- **Modern UI** - Clean, responsive React interface
 
-1. Train model (creates ml-service/model/model.h5)
-   ```bash
-   cd ml-service
-   python -m venv venv
-   # activate venv:
-   # Linux/macOS: source venv/bin/activate
-   # Windows (PowerShell): venv\Scripts\Activate.ps1
-   pip install -r requirements.txt
-   python train_model.py   # creates model/model.h5
-   ```
+## 🏗️ Architecture
 
-2. Start ML API (single-digit)
-   ```bash
-   cd ml-service
-   source venv/bin/activate
-   python app.py
-   # listens: http://localhost:5000
-   ```
+```
+Frontend (React) → ML Service (Flask + TensorFlow)
+```
 
-3. Start Multi-digit API
-   ```bash
-   cd ml-multidigit
-   python -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   python app.py
-   # listens: http://localhost:5001 (uses ../ml-service/model/model.h5)
-   ```
+- **Frontend**: React app with canvas drawing interface
+- **ML Service**: Unified Flask API serving a trained CNN model for both single and multi-digit predictions
 
-4. Start Node backend (proxy)
-   ```bash
-   cd node-backend
-   npm install
-   node index.js
-   # listens: http://localhost:4000
-   ```
+## 🚀 Quick Start
 
-5. Start React frontend
-   ```bash
-   cd react-frontend
-   npm install
-   npm start
-   # dev server: http://localhost:3000
+### Prerequisites
+- Node.js 16+ and npm
+- Python 3.8+
+- Git
+
+### Local Development
+
+1. **Train the Model** (first time only):
+```bash
+cd ml-service
+python -m venv venv
+venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+python train_model.py  # Creates model/model.h5
+```
+
+2. **Start ML Service**:
+```bash
+cd ml-service
+venv\Scripts\activate
+python app.py  # Runs on http://localhost:5000
+```
+
+3. **Start Frontend** (new terminal):
+```bash
+cd frontend
+npm install
+npm start  # Runs on http://localhost:3000
+```
+
+4. Open http://localhost:3000 in your browser
+
+## 🌐 Deploy for Free
+
+See [host.md](host.md) for comprehensive deployment guide or [DEPLOY.md](DEPLOY.md) for quick commands.
+
+**Recommended Platforms:**
+- **Frontend**: Vercel (free, automatic HTTPS, global CDN)
+- **ML Service**: Render (free tier with 750 hours/month)
+
+## 📦 Tech Stack
+
+### Frontend
+- React 18
+- React Router
+- HTML5 Canvas API
+
+### ML Service
+- Flask (API framework)
+- TensorFlow (deep learning)
+- OpenCV (image processing)
+- NumPy, Pillow (image manipulation)
+
+## 📝 API Endpoints
+
+- `GET /health` - Health check
+- `POST /predict` - Single digit prediction
+- `POST /multipredict` - Multi-digit prediction
+
+## 🤝 Contributing
+
+Contributions welcome! Open an issue or submit a PR.
+
+## 📄 License
+
+MIT License
+
+## 🎯 Future Improvements
+
+- [ ] Add confidence threshold
+- [ ] Support for mathematical expressions
+- [ ] Mobile app version
+- [ ] Model fine-tuning on custom datasets
+- [ ] Real-time collaborative drawing
+
+---
+
+Built with ❤️ using React and TensorFlow
    ```
