@@ -37,7 +37,7 @@ def preprocess_image(data_url):
         header, data_url = data_url.split(',', 1)
     img_bytes = base64.b64decode(data_url)
     img = Image.open(io.BytesIO(img_bytes)).convert('L')
-    img = ImageOps.invert(img)  # Canvas has white on black, MNIST is black on white
+    # img = ImageOps.invert(img)  # REMOVED: MNIST is white on black, same as canvas
     
     # Convert to numpy array
     arr = np.array(img)
@@ -81,7 +81,7 @@ def preprocess_and_segment(data_url):
         header, data_url = data_url.split(',', 1)
     img_bytes = base64.b64decode(data_url)
     img = Image.open(io.BytesIO(img_bytes)).convert('L')
-    img = ImageOps.invert(img)  # Canvas has white on black
+    # img = ImageOps.invert(img)  # REMOVED: MNIST is white on black
     arr = np.array(img)
     
     print(f"[DEBUG] Image shape: {arr.shape}, Min: {arr.min()}, Max: {arr.max()}, Mean: {arr.mean():.2f}")
