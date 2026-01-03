@@ -65,7 +65,7 @@ export default function Canvas() {
     setPrediction(null);
     setProbabilities(null);
     const dataUrl = canvasRef.current.toDataURL('image/png');
-    const apiUrl = process.env.REACT_APP_ML_API_URL || 'http://localhost:5000';
+    const apiUrl = process.env.REACT_APP_ML_API_URL || 'https://dk376907-digit-prediction-api.hf.space';
     console.log('[Canvas] Using API URL:', apiUrl);
 
     try {
