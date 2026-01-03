@@ -60,27 +60,38 @@ export default function Canvas() {
   };
 
   const predict = async () => {
+    console.log('[Canvas] Predict started');
     setLoading(true);
     setPrediction(null);
     setProbabilities(null);
     const dataUrl = canvasRef.current.toDataURL('image/png');
     const apiUrl = process.env.REACT_APP_ML_API_URL || 'http://localhost:5000';
+    console.log('[Canvas] Using API URL:', apiUrl);
+
     try {
+      console.log('[Canvas] Sending fetch request...');
       const res = await fetch(`${apiUrl}/predict`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: dataUrl })
       });
+      console.log('[Canvas] Response status:', res.status);
+
       const data = await res.json();
+      console.log('[Canvas] Response data:', data);
+
       if (data.success) {
         setPrediction(data.prediction);
         setProbabilities(data.probabilities);
       } else {
+        console.error('[Canvas] Prediction failed:', data.error);
         alert('Prediction failed: ' + (data.error || 'unknown error'));
       }
     } catch (err) {
+      console.error('[Canvas] Error calling API:', err);
       alert('Error calling API: ' + err.message);
     } finally {
+      console.log('[Canvas] Finally block reached, setting loading false');
       setLoading(false);
     }
   };
@@ -107,7 +118,7 @@ export default function Canvas() {
           <h3>Prediction: {prediction}</h3>
           <div>
             {probabilities && probabilities.map((p, idx) => (
-              <div key={idx}>[{idx}] { (p * 100).toFixed(2) }%</div>
+              <div key={idx}>[{idx}] {(p * 100).toFixed(2)}%</div>
             ))}
           </div>
         </div>

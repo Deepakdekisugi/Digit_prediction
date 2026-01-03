@@ -32,6 +32,10 @@ if not os.path.exists(MODEL_PATH) and MODEL_URL:
 try:
     model = load_model(MODEL_PATH)
     print('Loaded model from', MODEL_PATH)
+    # Warmup
+    print('Warming up model...')
+    model.predict(np.zeros((1, 28, 28, 1)), verbose=0)
+    print('Model warmed up')
 except Exception as e:
     model = None
     print('Warning: could not load model at startup. Run train_model.py to create model/model.h5. Error:', e)

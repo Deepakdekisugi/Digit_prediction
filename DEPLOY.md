@@ -17,7 +17,7 @@ We recommend **Render** or **Railway** for the backend as they support Python/Fl
     *   **Root Directory**: `ml-service`
     *   **Runtime**: Python 3
     *   **Build Command**: `pip install -r requirements.txt`
-    *   **Start Command**: `gunicorn --workers 1 --threads 8 --timeout 120 app:app`
+    *   **Start Command**: `gunicorn --workers 1 --threads 1 --timeout 120 app:app`
 5.  **Environment Variables**:
     *   Add `PYTHON_VERSION`: `3.10.0` (optional, but good for stability)
 6.  Click **Create Web Service**.
