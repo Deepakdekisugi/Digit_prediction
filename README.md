@@ -39,7 +39,7 @@ venv\Scripts\activate
 # source venv/bin/activate
 
 pip install -r requirements.txt
-python train_model.py  # Train the model (creates model/model.h5)
+# python train_model.py  # Optional: Retrain only if needed (pretrained model included)
 python app.py          # Start the server on http://localhost:5000
 ```
 

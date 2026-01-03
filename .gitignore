@@ -70,3 +70,4 @@ images/
 # Documentation
 *.md
 !README.md
+!DEPLOY.md
