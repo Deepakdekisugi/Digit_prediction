@@ -36,7 +36,28 @@ We recommend **Render** or **Railway** for the backend as they support Python/Fl
     git subtree push --prefix ml-service heroku main
     ```
 
+    git subtree push --prefix ml-service heroku main
+    ```
+
+### Option C: Hugging Face Spaces (Recommended)
+
+Hugging Face Spaces offers a generous free tier with **16GB RAM**, making it ideal for ML models.
+
+1.  Create a [Hugging Face account](https://huggingface.co/join).
+2.  Go to **New Space**.
+    *   **Space Name**: `digit-prediction-api` (or similar)
+    *   **License**: MIT
+    *   **Sdk**: **Docker**
+3.  Click **Create Space**.
+4.  **Connect GitHub**:
+    *   In your Space settings, connect this GitHub repository.
+    *   It will automatically detect the `Dockerfile` at the root and build it.
+5.  **Done!**
+    *   The URL will be something like `https://start-digit-prediction-api.hf.space`.
+    *   Use this URL for your Frontend configuration.
+
 ---
+
 
 ## 2. Frontend Deployment
 
