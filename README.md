@@ -1,3 +1,13 @@
+---
+title: Digit Prediction
+emoji: 🔢
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 # 🎨 Digit Prediction - Handwritten Digit Recognition
 
 > A full-stack machine learning web app that recognizes handwritten digits (0-9) and multi-digit sequences using deep learning.
@@ -48,18 +58,26 @@ Open a new terminal:
 ```bash
 cd frontend
 npm install
+# Create .env file for configuration
+echo "REACT_APP_ML_API_URL=http://localhost:5000" > .env
 npm start              # Start the React app on http://localhost:3000
 ```
 
 ## 🌐 Deployment
 
-For detailed deployment instructions on **Render** (Backend) and **Vercel** (Frontend), please refer to [DEPLOY.md](DEPLOY.md).
+The application is deployed using the following services:
+
+- **Frontend**: [Vercel](https://vercel.com/) (React App)
+- **Backend**: [Hugging Face Spaces](https://huggingface.co/spaces) (Dockerized Flask API)
+
+For detailed deployment instructions, please refer to the extensive guide created during development (check local history).
 
 ## 📦 Tech Stack
 
 - **Frontend**: React, React Router, Canvas API, CSS3
 - **Backend**: Flask, TensorFlow 2.x, OpenCV, NumPy, Pillow
-- **Tools**: Git, npm, pip
+- **Hosting**: Vercel (Frontend), Hugging Face Spaces (Backend)
+- **Tools**: Git, Docker, npm, pip
 
 ## 🤝 Contributing
 
