@@ -40,12 +40,7 @@ ENV/
 **/venv/
 **/env/
 
-# ML Models (large files)
-model/
-*.h5
-*.pkl
-*.pth
-*.onnx
+
 
 # OS
 .DS_Store
@@ -63,3 +58,15 @@ Thumbs.db
 coverage/
 .coverage
 *.cover
+
+# Images
+images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Documentation
+*.md
+!README.md
