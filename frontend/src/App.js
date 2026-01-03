@@ -7,14 +7,34 @@ export default function App() {
   return (
     <Router>
       <div className="container">
-        <h1>Digit Recognizer</h1>
         <nav>
-          <Link to="/">Single Digit</Link> |{' '}
+          <Link to="/">Single Digit</Link>
           <Link to="/multi">Multi Digit</Link>
         </nav>
+
         <Routes>
-          <Route path="/" element={<Canvas />} />
-          <Route path="/multi" element={<MultiCanvas />} />
+          <Route path="/" element={
+            <>
+              <header>
+                <h1>Digit Recognizer</h1>
+                <p className="lead">
+                  Experience real-time AI. Draw a digit below and watch our neural network interpret your keystrokes instantly.
+                </p>
+              </header>
+              <Canvas />
+            </>
+          } />
+          <Route path="/multi" element={
+            <>
+              <header>
+                <h1>Sequence Reader</h1>
+                <p className="lead">
+                  Pushing boundaries. Write a sequence of digits to test the model's ability to segment and recognize complex patterns.
+                </p>
+              </header>
+              <MultiCanvas />
+            </>
+          } />
         </Routes>
       </div>
     </Router>
