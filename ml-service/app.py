@@ -7,7 +7,12 @@ import cv2
 from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
-CORS(app)
+# Enable CORS for all domains and routes
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.route('/', methods=['GET'])
+def index():
+    return "Digit Prediction API is running. Use POST /predict or /multipredict."
 
 MODEL_PATH = 'model/model.h5'
 MODEL_URL = os.getenv('MODEL_URL', None)
